@@ -228,9 +228,10 @@ void EXTI9_5_IRQHandler(void)
 				}
 				VK32XX_UART_ClearITPendingBit( com, VK32XX_UART_IT_RFIEN );
 			}
+			EXTI_ClearITPendingBit( VK32XX_IRQ_EXTI_LINE );
 		}
 		while( GPIO_ReadInputDataBit( VK32XX_IRQ_GPIO_PORT,  VK32XX_IRQ_PIN ) == 0 );
-		EXTI_ClearITPendingBit( VK32XX_IRQ_EXTI_LINE );
+		
 	}
 	#endif
 }
